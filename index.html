@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attendance System</title>
+  <style>
+    .square {
+    width: 60px; 
+            height: 50px; 
+            background-color: background.jpg;  
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1;
+      background-color: lightgray;
+    }
+
+    header {
+      text-align: center;
+      padding: 10px;
+      background: #0088;
+      color: lightsalmon;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+      background: white;
+    }
+
+    table th, table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+
+    table th {
+      background: #4cad;
+      color: white;
+    }
+
+    table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    table tr:hover {
+      background-color: #e9ffe9;
+    }
+
+    .mark-btn {
+      padding: 5px 5px;
+      background:#008080;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .mark-btn:hover {
+      background:#FF00FF;
+    }
+
+    footer {
+      text-align: right;
+      padding: 10px;
+      background: #blue;
+      color: red;
+      position: fixed;
+      bottom: 0;
+      width: 50%;
+    }
+  </style>
+<body>
+    <header style="display: block;">
+  </header>
+  <style>
+    
+     body {
+    margin: 0;
+    font-family: cursive;, sans-serif;
+  }
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: Lightred;
+    color: lightsalmon;
+    padding: 20px;
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: lightblue;
+  }
+
+  .logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-left: a; 
+  }
+
+  h1 {
+    margin: 0;
+    color:#FFECB3;
+  }
+
+  p {
+    margin: 0;
+    color: #FFECB3;
+  }
+   .submit-btn {
+      margin-top: 20px;
+</style>
+</body>
+<div id="login-container" style="display: flex; justify-content: center; align-items: center; height: 100vh; background: url('background.jpg') no-repeat center center fixed;">
+    <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 300px; text-align: center;">
+      <h2>Login</h2>
+      <form id="login-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Enter username" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px;">
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter password" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px;">
+        
+        <button type="submit" style="width: 100%; padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">Login</button>
+        <p id="error-message" style="color: red; font-size: 14px; margin-top: 10px;"></p>
+      </form>
+    </div>
+  </div>
+
+   <header style="display: flex; align-items: center; gap: 10px;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+      <h1>Shree Jagriti Primary School</h1>
+      <img src="logo.png" alt="School Logo" width="50" height="50">
+      <p>Contact No: +977 9843943043</p>
+      <p>Email: Jagshree2020@gmail.com</p>
+      <p>Address: Bardiya, Nepal</p>
+    </div>
+  </header>
+  <main style="display: none;">
+    <h2>Mark Attendance</h2>
+    <label for="attendance-date">Date: </label>
+    <input type="date" id="attendance-date">
+    <label fro="Grade-number">Grade:</label>
+    <input type="Number" name="Grade-number">
+
+    <table>
+      <thead>
+        <tr>
+          <th>Student Name</th>
+          <th>Photo</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tbody id="student-table">
+          <tr>
+          <td>
+            <input type="text" value="" onkeydown="handleEnter(event)">
+          </td>
+          <td>
+            <img id="photo-new" src="" alt="Upload Photo" width="50" height="50">
+            <br>
+            <input type="file" accept="image/jpeg" onchange="uploadPhoto(this, 'photo-new')">
+          </td>
+          <td>
+            <button class="mark-btn" onclick="markPresent(this)">Present</button>
+            <button class="mark-btn" onclick="markAbsent(this)">Absent</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="btn-container">
+      <button class="submit-btn" onclick="generatePDF()">Save</button>
+    </div>
+  </div>
+  </main>
+
+  <footer style="display:none;">
+    &copy; 2024 Shree Jagriti Primary School
+     <div class="center-container">
+  </footer>
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const correctUsername = 'Admin';
+      const correctPassword = 'Admin123';
+
+      if (username === correctUsername && password === correctPassword) {
+        document.getElementById('login-container').style.display = 'none';
+        document.querySelector('header').style.display = 'block';
+        document.querySelector('main').style.display = 'block';
+        document.querySelector('footer').style.display = 'block';
+      } else {
+        document.getElementById('error-message').textContent = 'Incorrect username or password.';
+      }
+    });
+     function markPresent(button) {
+      const row = button.closest('tr');
+      row.style.backgroundColor = '#d4edda';
+     alert(`${row.cells[0].querySelector('input').value} marked as Present.`)    }
+
+    function markAbsent(button) {
+      const row = button.closest('tr');
+      row.style.backgroundColor = '#f8d7da';
+     alert(`${row.cells[0].querySelector('input').value} marked as Absent.`);
+    }
+
+    function uploadPhoto(input, imgId) {
+      const file = input.files[0];
+      if (file && file.type === 'image/jpeg') {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          document.getElementById(imgId).src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      } else {
+        alert('Please upload a valid JPG image.');
+      }
+    }
+    function handleEnter(event) {
+      if (event.key === 'Enter') {
+        const table = document.getElementById('student-table');
+        const newRow = document.createElement('tr');
+
+        newRow.innerHTML = `
+          <td>
+            <input type="text" value="" onkeydown="handleEnter(event)">
+          </td>
+          <td>
+            <img id="photo-new-${Date.now()}" src="" alt="Upload Photo" width="50" height="50">
+            <br>
+            <input type="file" accept="image/jpeg" onchange="uploadPhoto(this, 'photo-new-${Date.now()}')">
+          </td>
+          <td>
+            <button class="mark-btn" onclick="markPresent(this)">Present</button>
+            <button class="mark-btn" onclick="markAbsent(this)">Absent</button>
+          </td>
+        `;
+
+        table.appendChild(newRow);
+      }
+    }
+
+  </script>
+</body>
+</html>

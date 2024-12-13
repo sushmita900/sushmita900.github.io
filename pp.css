@@ -1,0 +1,120 @@
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background-color: #lightsalmon;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #lightskyblue;
+  color: white;
+  padding: 15px 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%; 
+  margin-right: auto;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+main section {
+  padding: 30px;
+  background: white;
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+h1 {  background-image: url(background.jpg);
+    background-repeat: no-repeat;      
+    height: 100px; width: 700px; 
+    font-size: 3em;      
+    padding-left: 150px; 
+    padding-top: 30px;      
+    border-radius: 15px; }
+
+
+h2 {
+  color: #lightgray;
+  margin-bottom: 15px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+table th {
+  background: #lightskyblue;
+  color: white;
+}
+
+table tr:nth-child(even) {
+  background-color: lightyellow;
+
+}
+
+table tr:hover {
+  background-color: #lightpink;
+}
+footer {
+  text-align: center;
+  padding: 15px;
+  background: lightyellow;
+  color: white;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  .logo img {
+    width: 40px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  table {
+    font-size: 14px;
+  }
+}
